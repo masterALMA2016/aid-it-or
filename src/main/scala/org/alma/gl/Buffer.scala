@@ -6,5 +6,5 @@ package org.alma.gl
  * @author dralagen
  */
 abstract class Buffer {
-  private var content: String = null
+  protected var content: String = null
 }

@@ -8,6 +8,9 @@ package org.alma.gl
 object Core {
 
   def main(args: Array[String]) {
-    println("Hello World");
+    var select: Selection = new SelectionUniqueState()
+
+    select.setEnd(3)
+    println(select.getContent)
   }
 }
