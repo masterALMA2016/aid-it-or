@@ -6,5 +6,7 @@ package org.alma.gl
  * @author dralagen
  */
 class Copy extends Command {
-
+    def execute = {
+        this.clipboard = this.selection.read()
+    }
 }

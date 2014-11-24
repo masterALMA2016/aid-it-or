@@ -9,6 +9,6 @@ import java.util.List
  */
 class Invoker {
   private var history: List[Command] = null
-  private var clipboard: Clipboard = null
-  private var selection: Selection = null
+      def invokeCommand(cmd:Command)={
+  }
 }

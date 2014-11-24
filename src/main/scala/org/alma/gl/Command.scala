@@ -6,6 +6,9 @@ package org.alma.gl
  * @author dralagen
  */
 class Command {
-  def execute {
-  }
+    protected var clipboard: Clipboard = null
+    protected var selection: Selection = null
+    def execute(clp: Clipboard): Clipboard = {
+        clipboard = new Clipboard(selection.getContent())
+    }
 }

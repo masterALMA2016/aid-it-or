@@ -6,5 +6,14 @@ package org.alma.gl
  * @author dralagen
  */
 abstract class Buffer {
-  protected var content: String = null
+    protected var content: String = null
+        
+    def Buffer(String text){
+        this.content = text
+    }
+        
+    def getContent:String={
+        content
+    }
+    
 }

@@ -6,5 +6,6 @@ package org.alma.gl
  * @author dralagen
  */
 class Delete extends Command {
-
+    def execute{
+    }
 }

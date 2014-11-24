@@ -6,5 +6,6 @@ package org.alma.gl
  * @author dralagen
  */
 class Cut extends Command {
-
+    def execute{
+    }
 }

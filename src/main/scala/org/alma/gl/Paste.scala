@@ -6,5 +6,7 @@ package org.alma.gl
  * @author dralagen
  */
 class Paste extends Command {
-
+    def execute{
+        this.selection.write(this.clipboard);
+    }
 }

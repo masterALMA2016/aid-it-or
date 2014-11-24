@@ -6,5 +6,6 @@ package org.alma.gl
  * @author dralagen
  */
 class Write extends Command {
-
+    def execute{
+    }
 }
