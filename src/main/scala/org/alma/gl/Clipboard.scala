@@ -5,5 +5,6 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Clipboard extends Buffer {
+class Clipboard(aContent : String) extends Buffer {
+    content = aContent
 }

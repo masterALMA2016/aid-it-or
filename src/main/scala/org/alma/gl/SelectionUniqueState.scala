@@ -5,5 +5,9 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class SelectionUniqueState extends Selection {
+class SelectionUniqueState(ws:Workspace, cursor: Int) extends Selection {
+    
+    start = cursor
+    end = cursor
+    buffer = ws
 }

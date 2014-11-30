@@ -7,6 +7,6 @@ import java.util.List
  *
  * @author dralagen
  */
-class Macro extends Command {
+class Macro(s:Selection) extends Command(s:Selection) {
   var commands: List[Command] = null
 }

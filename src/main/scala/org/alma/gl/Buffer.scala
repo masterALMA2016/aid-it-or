@@ -8,11 +8,7 @@ package org.alma.gl
 abstract class Buffer {
     protected var content: String = null
         
-    def Buffer(String text){
-        this.content = text
-    }
-        
-    def getContent:String={
+    def getContent():String={
         content
     }
     

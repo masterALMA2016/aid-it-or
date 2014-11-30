@@ -5,5 +5,9 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Workspace extends Buffer {
+class Workspace() extends Buffer {
+    content = ""
+        
+        def setContent(text: String) = this.content = text
+
 }

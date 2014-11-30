@@ -5,7 +5,7 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Cut extends Command {
-    def execute{
+class Cut(s: Selection) extends Command(s:Selection) {
+    override def execute = {
     }
 }

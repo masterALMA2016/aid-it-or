@@ -5,7 +5,9 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Write extends Command {
-    def execute{
+class Write(s: Selection, text: String) extends Command(s:Selection) {
+    override def execute={
+        clipboard = new Clipboard(text)
+        selection.write(clipboard)
     }
 }

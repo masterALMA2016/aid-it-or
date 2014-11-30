@@ -5,8 +5,8 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Paste extends Command {
-    def execute{
+class Paste(s: Selection) extends Command(s:Selection) {
+    override def execute={
         this.selection.write(this.clipboard);
     }
 }

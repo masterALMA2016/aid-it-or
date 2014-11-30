@@ -6,9 +6,9 @@ package org.alma.gl
  * @author dralagen
  */
 abstract class Selection {
-  private var start: Int = 0
-  private var end: Int = 0
-  private var buffer: Workspace = null
+  protected var start: Int = 0
+  protected var end: Int = 0
+  protected var buffer: Workspace = null
 
   def getStart: Int = {
     start
@@ -24,12 +24,15 @@ abstract class Selection {
   def setEnd(end: Int) = this.end = end
 
   def getContent: String = {
-    val str: String = "Hello"
-
+    val str: String = buffer.getContent()
+        
     str.substring(start,end)
   }
 
-  def write(cli: Clipboard) = ???
+  def write(cli: Clipboard) = 
+  {
+      buffer.setContent(cli.getContent())
+  }
 
   def read:Clipboard = ???
 }

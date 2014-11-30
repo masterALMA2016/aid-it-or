@@ -5,8 +5,8 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Copy extends Command {
-    def execute = {
-        this.clipboard = this.selection.read()
+class Copy(s: Selection) extends Command(s:Selection) {
+    override def execute = {
+        //this.clipboard = this.selection.read()
     }
 }

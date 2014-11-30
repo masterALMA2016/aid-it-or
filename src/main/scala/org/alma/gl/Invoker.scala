@@ -10,5 +10,6 @@ import java.util.List
 class Invoker {
   private var history: List[Command] = null
       def invokeCommand(cmd:Command)={
+      cmd.execute()
   }
 }

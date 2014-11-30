@@ -5,7 +5,7 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class Delete extends Command {
-    def execute{
+class Delete(s: Selection) extends Command(s:Selection) {
+    override def execute={
     }
 }
