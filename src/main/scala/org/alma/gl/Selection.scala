@@ -29,7 +29,7 @@ abstract class Selection {
     str.substring(start,end)
   }
 
-  def write(cli: Clipboard) = {
+  def write(cli: Clipboard): Unit = {
     val content: String = buffer.getContent()
     var before: String = ""
     var after: String = ""
@@ -45,6 +45,8 @@ abstract class Selection {
       
     buffer.setContent(before + cli.getContent() + after)
   }
+
+  def delete(): Unit
 
   def read:Clipboard = ???
 }

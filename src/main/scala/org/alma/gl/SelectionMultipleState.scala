@@ -10,4 +10,8 @@ class SelectionMultipleState(ws:Workspace, beginCursor:Int, endCursor:Int) exten
   start = beginCursor
   end = endCursor
   buffer = ws
+
+  override def delete(): Unit = {
+      write(new Clipboard(""))
+  }
 }

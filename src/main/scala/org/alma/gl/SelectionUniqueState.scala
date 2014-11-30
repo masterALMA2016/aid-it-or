@@ -10,4 +10,10 @@ class SelectionUniqueState(ws:Workspace, cursor: Int) extends Selection {
     start = cursor
     end = cursor
     buffer = ws
+
+    override def delete(): Unit = {
+        end+=1
+        write(new Clipboard(""))
+        end-=1
+    }
 }
