@@ -1,4 +1,6 @@
-package org.alma.gl
+package org.alma.gl.command
+
+import org.alma.gl.{Clipboard, Selection}
 
 /**
  * Created on 24/11/14.

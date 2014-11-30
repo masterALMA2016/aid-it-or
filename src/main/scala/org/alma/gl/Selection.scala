@@ -29,9 +29,21 @@ abstract class Selection {
     str.substring(start,end)
   }
 
-  def write(cli: Clipboard) = 
-  {
-      buffer.setContent(cli.getContent())
+  def write(cli: Clipboard) = {
+    val content: String = buffer.getContent()
+    var before: String = ""
+    var after: String = ""
+    
+    if (start <= content.length()) {
+      before = content.substring(0, start)
+      if (end < content.length()) {
+        after = content.substring(end, content.length())
+      }
+    } else {
+      before = content
+    }
+      
+    buffer.setContent(before + cli.getContent() + after)
   }
 
   def read:Clipboard = ???

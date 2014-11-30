@@ -5,5 +5,9 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class SelectionMultipleState extends Selection {
+class SelectionMultipleState(ws:Workspace, beginCursor:Int, endCursor:Int) extends Selection {
+
+  start = beginCursor
+  end = endCursor
+  buffer = ws
 }

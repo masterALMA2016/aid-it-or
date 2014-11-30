@@ -2,6 +2,8 @@ package org.alma.gl
 
 import java.util.List
 
+import org.alma.gl.command.Command
+
 /**
  * Created on 24/11/14.
  *
