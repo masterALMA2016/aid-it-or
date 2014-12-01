@@ -15,6 +15,7 @@ object Core {
     var select: Selection = new SelectionUniqueStrategy(workspace,3)
     var cmd: Command = new Write(select, "cou")
     Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
 
@@ -31,11 +32,11 @@ object Core {
     cmd = new Write(select, "Hello")
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
-    println(" undo write selectionMultiple")
-    Invoker.undo()
-    println(workspace.getContent())
+//    println(" undo write selectionMultiple")
+//    Invoker.undo()
+//    println(workspace.getContent())
 
-    select = new SelectionUniqueStrategy(workspace, 5)
+    select = new SelectionUniqueStrategy(workspace, 4)
     cmd = new Delete(select)
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
@@ -60,6 +61,7 @@ object Core {
         new SelectionMultipleStrategy(workspace, 0, Int.MaxValue)
       )
     )
+    println(workspace.getContent())
 
     Invoker.invokeCommand(
       new Write(
@@ -67,6 +69,7 @@ object Core {
         "Hello World"
       )
     )
+    println(workspace.getContent())
 
     cmd = new Paste(new SelectionUniqueStrategy(workspace, 3))
     Invoker.invokeCommand(cmd)
@@ -85,14 +88,51 @@ object Core {
     cmd = new Copy(new SelectionMultipleStrategy(workspace, 0, 5))
     Invoker.invokeCommand(cmd)
 
+    println("UNDO ---------------")
+
     Invoker.undo()
+    println(workspace.getContent())
 
-    Invoker.invokeCommand(
-      new Paste(
-        new SelectionUniqueStrategy(workspace, 11)
-      )
-    )
+    Invoker.undo()
+    println(workspace.getContent())
 
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
+    println(workspace.getContent())
+
+    Invoker.undo()
     println(workspace.getContent())
   }
 }

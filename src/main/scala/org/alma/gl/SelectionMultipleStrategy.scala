@@ -7,8 +7,20 @@ package org.alma.gl
  */
 class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) extends Selection {
 
-  start = beginCursor
-  end = endCursor
+  start = {
+    if (beginCursor > ws.getContent().length()) {
+      ws.getContent().length()
+    } else {
+      beginCursor
+    }
+  }
+  end = {
+    if (endCursor > ws.getContent().length()) {
+      ws.getContent().length()
+    } else {
+      endCursor
+    }
+  }
   buffer = ws
 
   override def delete(): String = {

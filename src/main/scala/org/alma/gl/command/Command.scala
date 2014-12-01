@@ -10,7 +10,7 @@ import org.alma.gl.{Clipboard, Selection}
 abstract class Command(s : Selection) {
   protected var selection: Selection = s
 
-  def getSelectContent:String = s.getContent
+  def getSelectContent:String = selection.getContent
 
   def execute(c: Clipboard):Clipboard = ???
 

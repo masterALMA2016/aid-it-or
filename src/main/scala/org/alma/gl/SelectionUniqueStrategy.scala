@@ -7,8 +7,14 @@ package org.alma.gl
  */
 class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     
-    start = cursor
-    end = cursor
+    start = {
+        if (cursor > ws.getContent().length()) {
+            ws.getContent().length()
+        } else {
+            cursor
+        }
+    }
+    end = start
     buffer = ws
 
     override def delete(): String = {

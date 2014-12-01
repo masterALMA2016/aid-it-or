@@ -1,7 +1,6 @@
 package org.alma.gl
 
 import java.util
-import java.util.List
 
 import org.alma.gl.command.Command
 
@@ -11,7 +10,7 @@ import org.alma.gl.command.Command
  * @author dralagen
  */
 object Invoker {
-  private val history: List[CommandHistory] = new util.ArrayList[CommandHistory]()
+  private val history: util.List[CommandHistory] = new util.ArrayList[CommandHistory]()
   private var clipboard: Clipboard = null
 
 
@@ -24,11 +23,14 @@ object Invoker {
   }
 
   def undo() = {
-    val cmd:CommandHistory = history.get(history.size()-1)
-    cmd.undo()
+    val index:Int = history.size()-1
+    if (index >= 0) {
+      val cmd: CommandHistory = history.get(index)
+      cmd.undo()
 
-    clipboard = cmd.preClipboard
+      clipboard = cmd.preClipboard
 
-    history.remove(history.size()-1)
+      history.remove(index)
+    }
   }
 }
