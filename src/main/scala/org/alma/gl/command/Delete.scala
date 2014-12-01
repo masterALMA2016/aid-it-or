@@ -1,6 +1,6 @@
 package org.alma.gl.command
 
-import org.alma.gl.{SelectionUniqueState, Invoker, Clipboard, Selection}
+import org.alma.gl.{SelectionUniqueStrategy, Invoker, Clipboard, Selection}
 
 /**
  * Created on 24/11/14.
@@ -20,7 +20,7 @@ class Delete(s: Selection) extends Command(s) {
             start-=1
         }
 
-        val newSelect:Selection = new SelectionUniqueState(selection.getWorkspace, start)
+        val newSelect:Selection = new SelectionUniqueStrategy(selection.getWorkspace, start)
 
         val cmd:Command = new Write(newSelect, deleteText)
 

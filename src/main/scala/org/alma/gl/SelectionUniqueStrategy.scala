@@ -5,7 +5,7 @@ package org.alma.gl
  *
  * @author dralagen
  */
-class SelectionUniqueState(ws:Workspace, cursor: Int) extends Selection {
+class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     
     start = cursor
     end = cursor

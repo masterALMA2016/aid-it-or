@@ -1,6 +1,6 @@
 package org.alma.gl.command
 
-import org.alma.gl.{SelectionMultipleState, Clipboard, Selection}
+import org.alma.gl.{SelectionMultipleStrategy, Clipboard, Selection}
 
 /**
  * Created on 24/11/14.
@@ -17,7 +17,7 @@ class Write(s: Selection, t: String) extends Command(s) {
 
     override def undo(c: Clipboard, selectContent:String): Unit = {
         val clip:Clipboard = new Clipboard(selectContent)
-        val newSelection:Selection = new SelectionMultipleState(selection.getWorkspace, selection.getStart, selection.getStart+t.size)
+        val newSelection:Selection = new SelectionMultipleStrategy(selection.getWorkspace, selection.getStart, selection.getStart+t.size)
 
         newSelection.write(clip)
     }

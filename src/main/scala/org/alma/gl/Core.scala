@@ -12,14 +12,14 @@ object Core {
   def main(args: Array[String]) {
     val workspace: Workspace = new Workspace()
     println(workspace.getContent())
-    var select: Selection = new SelectionUniqueState(workspace,3)
+    var select: Selection = new SelectionUniqueStrategy(workspace,3)
     var cmd: Command = new Write(select, "cou")
     Invoker.invokeCommand(cmd)
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
 
 
-    select = new SelectionUniqueState(workspace, 6)
+    select = new SelectionUniqueStrategy(workspace, 6)
     cmd = new Write(select, " World")
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
@@ -27,7 +27,7 @@ object Core {
     Invoker.undo()
     println(workspace.getContent())
 
-    select = new SelectionMultipleState(workspace, 0, 6)
+    select = new SelectionMultipleStrategy(workspace, 0, 6)
     cmd = new Write(select, "Hello")
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
@@ -35,7 +35,7 @@ object Core {
     Invoker.undo()
     println(workspace.getContent())
 
-    select = new SelectionUniqueState(workspace, 5)
+    select = new SelectionUniqueStrategy(workspace, 5)
     cmd = new Delete(select)
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
@@ -43,7 +43,7 @@ object Core {
     Invoker.undo()
     println(workspace.getContent())
 
-    select = new SelectionMultipleState(workspace, 3,6)
+    select = new SelectionMultipleStrategy(workspace, 3,6)
     cmd = new Delete(select)
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
