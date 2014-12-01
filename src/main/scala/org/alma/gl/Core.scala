@@ -1,6 +1,6 @@
 package org.alma.gl
 
-import org.alma.gl.command.{Delete, Command, Write}
+import org.alma.gl.command.{Cut, Delete, Command, Write}
 
 /**
  * Created on 10/11/14.
@@ -49,6 +49,13 @@ object Core {
     println(workspace.getContent())
     Invoker.undo()
     println(" undo delete selectionMultiple")
+    println(workspace.getContent())
+
+    cmd = new Cut(select)
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println(" undo cut selectionMultiple")
+    Invoker.undo()
     println(workspace.getContent())
   }
 }

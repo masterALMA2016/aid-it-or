@@ -25,4 +25,8 @@ class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     override def read: Clipboard = {
         new Clipboard("")
     }
+
+    override def cut(): Clipboard = {
+        read
+    }
 }

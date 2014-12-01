@@ -6,10 +6,10 @@ package org.alma.gl
  * @author dralagen
  */
 abstract class Selection {
- protected var start: Int = 0
+  protected var start: Int = 0
+
   protected var end: Int = 0
   protected var buffer: Workspace = null
-
   def getStart: Int = {
     start
   }
@@ -17,11 +17,11 @@ abstract class Selection {
   def setStart(start: Int): Unit =
   this.start = start
 
-
   def getEnd: Int = end
 
 
   def setEnd(end: Int) = this.end = end
+
 
   def getContent: String = {
     val str: String = buffer.getContent()
@@ -58,4 +58,6 @@ abstract class Selection {
   def delete(): String
 
   def read:Clipboard = ???
+
+  def cut(): Clipboard = ???
 }

@@ -20,4 +20,10 @@ class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) ex
   override def read: Clipboard = {
     new Clipboard(buffer.getContent().substring(start, end))
   }
+
+  override def cut(): Clipboard = {
+    val clip:Clipboard = read
+    delete()
+    clip
+  }
 }
