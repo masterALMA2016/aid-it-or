@@ -8,15 +8,21 @@ import org.alma.gl.{SelectionUniqueState, Invoker, Clipboard, Selection}
  * @author dralagen
  */
 class Delete(s: Selection) extends Command(s) {
+    var deleteText:String = null
     override def execute(clipboard:Clipboard): Clipboard ={
-        selection.delete()
+        deleteText=selection.delete()
         clipboard
     }
 
     override def undo(c: Clipboard, selectContent:String): Unit = {
-        val newSelect:Selection = new SelectionUniqueState(selection.getWorkspace, selection.getStart)
+        var start:Int = selection.getStart
+        if (selection.getStart == selection.getEnd && start > 0) {
+            start-=1
+        }
 
-        val cmd:Command = new Write(newSelect, selectContent)
+        val newSelect:Selection = new SelectionUniqueState(selection.getWorkspace, start)
+
+        val cmd:Command = new Write(newSelect, deleteText)
 
         cmd.execute(c)
     }

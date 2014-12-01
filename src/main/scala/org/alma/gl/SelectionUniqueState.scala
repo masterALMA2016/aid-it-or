@@ -11,10 +11,15 @@ class SelectionUniqueState(ws:Workspace, cursor: Int) extends Selection {
     end = cursor
     buffer = ws
 
-    override def delete(): Unit = {
-        end+=1
-        write(new Clipboard(""))
-        end-=1
+    override def delete(): String = {
+        if (start > 0 && ws.getContent().length() > 1) {
+            start -= 1
+            val deleteText:String = getContent
+            write(new Clipboard(""))
+            start += 1
+            return deleteText
+        }
+        ""
     }
 
     override def read: Clipboard = {

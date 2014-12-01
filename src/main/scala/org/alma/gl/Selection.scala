@@ -55,7 +55,7 @@ abstract class Selection {
     buffer
   }
 
-  def delete(): Unit
+  def delete(): String
 
   def read:Clipboard = ???
 }

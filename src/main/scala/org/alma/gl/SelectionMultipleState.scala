@@ -11,8 +11,10 @@ class SelectionMultipleState(ws:Workspace, beginCursor:Int, endCursor:Int) exten
   end = endCursor
   buffer = ws
 
-  override def delete(): Unit = {
+  override def delete(): String = {
+      val deleteText = getContent
       write(new Clipboard(""))
+      deleteText
   }
 
   override def read: Clipboard = {
