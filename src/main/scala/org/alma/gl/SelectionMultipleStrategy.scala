@@ -8,14 +8,18 @@ package org.alma.gl
 class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) extends Selection {
 
   start = {
-    if (beginCursor > ws.getContent().length()) {
+    if (beginCursor < 0) {
+      0
+    } else if (beginCursor > ws.getContent().length()) {
       ws.getContent().length()
     } else {
       beginCursor
     }
   }
   end = {
-    if (endCursor > ws.getContent().length()) {
+    if (endCursor < start) {
+      start
+    } else if (endCursor > ws.getContent().length()) {
       ws.getContent().length()
     } else {
       endCursor

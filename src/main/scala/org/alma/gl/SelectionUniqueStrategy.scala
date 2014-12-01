@@ -8,7 +8,9 @@ package org.alma.gl
 class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     
     start = {
-        if (cursor > ws.getContent().length()) {
+        if (cursor < 0) {
+            0
+        } else if (cursor > ws.getContent().length()) {
             ws.getContent().length()
         } else {
             cursor
