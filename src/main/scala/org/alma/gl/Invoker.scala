@@ -1,5 +1,6 @@
 package org.alma.gl
 
+import java.util
 import java.util.List
 
 import org.alma.gl.command.Command
@@ -9,9 +10,22 @@ import org.alma.gl.command.Command
  *
  * @author dralagen
  */
-class Invoker {
-  private var history: List[Command] = null
-      def invokeCommand(cmd:Command)={
-      cmd.execute()
+object Invoker {
+  private val history: List[CommandHistory] = new util.ArrayList[CommandHistory]()
+  private var clipboard: Clipboard = null
+
+
+  def invokeCommand(cmd:Command)={
+      val cmdHistory = new CommandHistory(cmd, clipboard)
+      clipboard = cmd.execute(clipboard)
+      cmdHistory.setPostClipboard(clipboard)
+      history.add(cmdHistory)
+      clipboard
+  }
+
+  def undo() = {
+    val cmd:CommandHistory = history.get(history.size()-1)
+    cmd.undo()
+    history.remove(history.size()-1)
   }
 }

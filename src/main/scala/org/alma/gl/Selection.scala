@@ -6,7 +6,7 @@ package org.alma.gl
  * @author dralagen
  */
 abstract class Selection {
-  protected var start: Int = 0
+ protected var start: Int = 0
   protected var end: Int = 0
   protected var buffer: Workspace = null
 
@@ -15,7 +15,7 @@ abstract class Selection {
   }
 
   def setStart(start: Int): Unit =
-    this.start = start
+  this.start = start
 
 
   def getEnd: Int = end
@@ -25,7 +25,12 @@ abstract class Selection {
 
   def getContent: String = {
     val str: String = buffer.getContent()
-        
+
+    if (start >= str.length()) {
+      return ""
+    } else if (end >= str.length()) {
+      return str.substring(start)
+    }
     str.substring(start,end)
   }
 
@@ -33,17 +38,21 @@ abstract class Selection {
     val content: String = buffer.getContent()
     var before: String = ""
     var after: String = ""
-    
+
     if (start <= content.length()) {
       before = content.substring(0, start)
       if (end < content.length()) {
-        after = content.substring(end, content.length())
+        after = content.substring(end)
       }
     } else {
       before = content
     }
-      
+
     buffer.setContent(before + cli.getContent() + after)
+  }
+
+  def getWorkspace: Workspace = {
+    buffer
   }
 
   def delete(): Unit

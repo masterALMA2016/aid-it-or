@@ -14,4 +14,8 @@ class SelectionMultipleState(ws:Workspace, beginCursor:Int, endCursor:Int) exten
   override def delete(): Unit = {
       write(new Clipboard(""))
   }
+
+  override def read: Clipboard = {
+    new Clipboard(buffer.getContent().substring(start, end))
+  }
 }

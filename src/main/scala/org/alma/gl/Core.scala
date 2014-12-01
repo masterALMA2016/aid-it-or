@@ -10,43 +10,45 @@ import org.alma.gl.command.{Delete, Command, Write}
 object Core {
 
   def main(args: Array[String]) {
-    var workspace: Workspace = new Workspace()
+    val workspace: Workspace = new Workspace()
     println(workspace.getContent())
     var select: Selection = new SelectionUniqueState(workspace,3)
-    var invoker: Invoker = new Invoker()
     var cmd: Command = new Write(select, "cou")
-    invoker.invokeCommand(cmd)
-    invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
     println(workspace.getContent())
 
 
     select = new SelectionUniqueState(workspace, 6)
     cmd = new Write(select, " World")
-    invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println(" undo write selectionUnique")
+    Invoker.undo()
     println(workspace.getContent())
 
     select = new SelectionMultipleState(workspace, 0, 6)
     cmd = new Write(select, "Hello")
-    invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println(" undo write selectionMultiple")
+    Invoker.undo()
     println(workspace.getContent())
 
     select = new SelectionUniqueState(workspace, 5)
     cmd = new Delete(select)
-    invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println (" undo delete selectionUnique")
+    Invoker.undo()
     println(workspace.getContent())
 
-    cmd = new Write(select, " ")
-    invoker.invokeCommand(cmd)
-
-    select = new SelectionMultipleState(workspace, 0,6)
+    select = new SelectionMultipleState(workspace, 3,6)
     cmd = new Delete(select)
-    invoker.invokeCommand(cmd)
+    Invoker.invokeCommand(cmd)
     println(workspace.getContent())
-
-
-    /*
-    invoker.undo(write)
+    Invoker.undo()
+    println(" undo delete selectionMultiple")
     println(workspace.getContent())
-    */
   }
 }

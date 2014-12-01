@@ -7,10 +7,12 @@ import org.alma.gl.{Clipboard, Selection}
  *
  * @author dralagen
  */
-class Command(s : Selection) {
-    protected var clipboard: Clipboard = null
-    protected var selection: Selection = s
-    def execute() = {
-        //clipboard = new Clipboard(selection.getContent())
-    }
+abstract class Command(s : Selection) {
+  protected var selection: Selection = s
+
+  def getSelectContent:String = s.getContent
+
+  def execute(c: Clipboard):Clipboard = ???
+
+  def undo(c: Clipboard, selectContent:String): Unit = {}
 }

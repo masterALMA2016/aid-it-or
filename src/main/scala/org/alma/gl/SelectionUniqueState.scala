@@ -16,4 +16,8 @@ class SelectionUniqueState(ws:Workspace, cursor: Int) extends Selection {
         write(new Clipboard(""))
         end-=1
     }
+
+    override def read: Clipboard = {
+        new Clipboard("")
+    }
 }
