@@ -26,6 +26,9 @@ object Invoker {
   def undo() = {
     val cmd:CommandHistory = history.get(history.size()-1)
     cmd.undo()
+
+    clipboard = cmd.preClipboard
+
     history.remove(history.size()-1)
   }
 }

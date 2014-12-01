@@ -56,6 +56,12 @@ object Core {
     println(workspace.getContent())
 
     Invoker.invokeCommand(
+      new Delete(
+        new SelectionMultipleStrategy(workspace, 0, Int.MaxValue)
+      )
+    )
+
+    Invoker.invokeCommand(
       new Write(
         new SelectionUniqueStrategy(workspace, 0),
         "Hello World"
@@ -74,6 +80,19 @@ object Core {
     println(workspace.getContent())
     println(" undo paste cut selection")
     Invoker.undo()
+    println(workspace.getContent())
+
+    cmd = new Copy(new SelectionMultipleStrategy(workspace, 0, 5))
+    Invoker.invokeCommand(cmd)
+
+    Invoker.undo()
+
+    Invoker.invokeCommand(
+      new Paste(
+        new SelectionUniqueStrategy(workspace, 11)
+      )
+    )
+
     println(workspace.getContent())
   }
 }
