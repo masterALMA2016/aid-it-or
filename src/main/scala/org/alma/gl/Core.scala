@@ -1,6 +1,6 @@
 package org.alma.gl
 
-import org.alma.gl.command.{Cut, Delete, Command, Write}
+import org.alma.gl.command._
 
 /**
  * Created on 10/11/14.
@@ -54,7 +54,25 @@ object Core {
     cmd = new Cut(select)
     Invoker.invokeCommand(cmd)
     println(workspace.getContent())
-    println(" undo cut selectionMultiple")
+
+    Invoker.invokeCommand(
+      new Write(
+        new SelectionUniqueStrategy(workspace, 0),
+        "Hello World"
+      )
+    )
+
+    cmd = new Paste(new SelectionUniqueStrategy(workspace, 3))
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println(" undo paste cut selection")
+    Invoker.undo()
+    println(workspace.getContent())
+
+    cmd = new Paste(new SelectionMultipleStrategy(workspace, 0, 3))
+    Invoker.invokeCommand(cmd)
+    println(workspace.getContent())
+    println(" undo paste cut selection")
     Invoker.undo()
     println(workspace.getContent())
   }
