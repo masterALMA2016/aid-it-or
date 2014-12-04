@@ -44,10 +44,61 @@ class CutTest {
     Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
     Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
 
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionUniqueStrategy(workspace, 3)
+      )
+    )
+
+    Assert.assertEquals("Cut content with selection unique", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "", Invoker.getContentClipboard)
+  }
+
+  @Test
+  def executeSelectionMultipleAndUnique():Unit = {
+
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionMultipleStrategy(workspace, 0, 3)
+      )
+    )
+
+    Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
+
+
+
+  }
+
+  @Test
+  def doubleExecuteSelectionMultiple():Unit = {
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionMultipleStrategy(workspace, 0, 3)
+      )
+    )
+
+    Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
+
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionMultipleStrategy(workspace, 1, 6)
+      )
+    )
+
+    Assert.assertEquals("Cut content with selection multiple", " !", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "World", Invoker.getContentClipboard)
   }
 
   @Test
   def undoSelectionUniqueTest(): Unit = {
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionMultipleStrategy(workspace, 0, 3)
+      )
+    )
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionUniqueStrategy(workspace, 3)
@@ -56,14 +107,21 @@ class CutTest {
 
     Invoker.undo()
 
-    Assert.assertEquals("Undo Cut with selection unique", "Cou World!", workspace.getContent())
-    Assert.assertEquals("Cut undo content into clipboard", "", Invoker.getContentClipboard)
+    Assert.assertEquals("Undo Cut with selection unique", " World!", workspace.getContent())
+    Assert.assertEquals("Cut undo content into clipboard", "Cou", Invoker.getContentClipboard)
 
 
   }
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionMultipleStrategy(workspace, 0, 3)
+      )
+    )
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionMultipleStrategy(workspace, 0, 3)
@@ -72,8 +130,8 @@ class CutTest {
 
     Invoker.undo()
 
-    Assert.assertEquals("Undo Cut with selection multiple", "Cou World!", workspace.getContent())
-    Assert.assertEquals("Cut undo content into clipboard", "", Invoker.getContentClipboard)
+    Assert.assertEquals("Undo Cut with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Cut undo content into clipboard", "Cou", Invoker.getContentClipboard)
 
   }
 

@@ -21,6 +21,7 @@ class CopyTest {
 
   @Test
   def executeSelectionUniqueTest(): Unit = {
+
     Invoker.invokeCommand(
       new Copy(
         new SelectionUniqueStrategy(workspace, 3)
@@ -46,7 +47,60 @@ class CopyTest {
   }
 
   @Test
+  def executeSelectionMultipleAndUnique(): Unit = {
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionMultipleStrategy(workspace, 4, 9)
+      )
+    )
+
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "World", Invoker.getContentClipboard)
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionUniqueStrategy(workspace, 0)
+      )
+    )
+
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "", Invoker.getContentClipboard)
+
+  }
+
+  @Test
+  def doubleExecuteSelectionMultiple(): Unit = {
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionMultipleStrategy(workspace, 4, 9)
+      )
+    )
+
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "World", Invoker.getContentClipboard)
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionMultipleStrategy(workspace, 0, 3)
+      )
+    )
+
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "Cou", Invoker.getContentClipboard)
+
+  }
+
+  @Test
   def undoSelectionUniqueTest(): Unit = {
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionMultipleStrategy(workspace, 4, 9)
+      )
+    )
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionUniqueStrategy(workspace, 3)
@@ -56,13 +110,20 @@ class CopyTest {
     Invoker.undo()
 
     Assert.assertEquals("Undo Copy with selection unique", "Cou World!", workspace.getContent())
-    Assert.assertEquals("Copy undo content into clipboard", "", Invoker.getContentClipboard)
+    Assert.assertEquals("Copy undo content into clipboard", "World", Invoker.getContentClipboard)
 
 
   }
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Invoker.invokeCommand(
+      new Copy(
+        new SelectionMultipleStrategy(workspace, 4, 9)
+      )
+    )
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionMultipleStrategy(workspace, 0, 3)
@@ -72,7 +133,7 @@ class CopyTest {
     Invoker.undo()
 
     Assert.assertEquals("Undo Copy with selection multiple", "Cou World!", workspace.getContent())
-    Assert.assertEquals("Copy undo content into clipboard", "", Invoker.getContentClipboard)
+    Assert.assertEquals("Copy undo content into clipboard", "World", Invoker.getContentClipboard)
 
   }
 }
