@@ -28,7 +28,7 @@ class DeleteTest {
       )
     )
 
-    Assert.assertEquals("Add content with selection unique", "Co World!", workspace.getContent())
+    Assert.assertEquals("Delete content with selection unique", "Co World!", workspace.getContent())
   }
 
   @Test
@@ -40,7 +40,7 @@ class DeleteTest {
       )
     )
 
-    Assert.assertEquals("Add content with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Delete content with selection multiple", " World!", workspace.getContent())
 
   }
 
@@ -54,7 +54,7 @@ class DeleteTest {
 
     Invoker.undo()
 
-    Assert.assertEquals("Undo Write with selection unique", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Undo Delete with selection unique", "Cou World!", workspace.getContent())
 
 
   }
@@ -69,7 +69,7 @@ class DeleteTest {
 
     Invoker.undo()
 
-    Assert.assertEquals("Undo Write with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Undo Delete with selection multiple", "Cou World!", workspace.getContent())
 
   }
 
