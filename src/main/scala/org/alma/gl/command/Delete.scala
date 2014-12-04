@@ -1,6 +1,6 @@
 package org.alma.gl.command
 
-import org.alma.gl.{SelectionUniqueStrategy, Invoker, Clipboard, Selection}
+import org.alma.gl.{SelectionUniqueStrategy, Clipboard, Selection}
 
 /**
  * Created on 24/11/14.
