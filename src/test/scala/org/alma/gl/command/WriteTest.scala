@@ -1,6 +1,7 @@
-import org.alma.gl.command.Write
-import org.alma.gl.{SelectionMultipleStrategy, SelectionUniqueStrategy, Invoker, Workspace}
-import org.junit.{Assert, Test, Before}
+package org.alma.gl.command
+
+import org.alma.gl.{Invoker, SelectionMultipleStrategy, SelectionUniqueStrategy, Workspace}
+import org.junit.{Assert, Before, Test}
 
 /**
  * Created on 02/12/14.
