@@ -5,7 +5,7 @@ import org.alma.gl.{SelectionUniqueStrategy, Clipboard, Selection}
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class Delete(s: Selection) extends Command(s) {
     var deleteText:String = null

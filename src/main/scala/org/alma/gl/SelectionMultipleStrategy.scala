@@ -3,7 +3,7 @@ package org.alma.gl
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) extends Selection {
 

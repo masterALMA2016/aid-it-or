@@ -5,7 +5,7 @@ import org.alma.gl.{SelectionUniqueStrategy, SelectionMultipleStrategy, Clipboar
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen,thecreator
  */
 class Paste(s: Selection) extends Command(s) {
     override def execute(clipboard:Clipboard): Clipboard={

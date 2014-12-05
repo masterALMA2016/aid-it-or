@@ -5,7 +5,7 @@ import org.alma.gl.{SelectionMultipleStrategy, Clipboard, Selection}
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class Write(s: Selection, t: String) extends Command(s) {
     val text:String = t

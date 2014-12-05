@@ -6,7 +6,7 @@ import org.junit.{Assert, Before, Test}
 /**
  * Created on 02/12/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class WriteTest {
 

@@ -5,7 +5,7 @@ import org.alma.gl.command.Command
 /**
  * Created on 01/12/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class CommandHistory(cmd:Command, preClip:Clipboard) {
   val command:Command = cmd

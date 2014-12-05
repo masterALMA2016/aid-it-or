@@ -7,7 +7,7 @@ import org.alma.gl.command.Command
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 object Invoker {
   private val history: util.List[CommandHistory] = new util.ArrayList[CommandHistory]()

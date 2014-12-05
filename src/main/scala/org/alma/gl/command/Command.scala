@@ -5,7 +5,7 @@ import org.alma.gl.{Clipboard, Selection}
 /**
  * Created on 24/11/14.
  *
- * @author dralagen
+ * @author dralagen,thecreator
  */
 abstract class Command(s : Selection) {
   protected var selection: Selection = s

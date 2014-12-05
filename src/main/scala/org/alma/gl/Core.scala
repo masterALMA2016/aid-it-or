@@ -5,7 +5,7 @@ import org.alma.gl.command._
 /**
  * Created on 10/11/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 object Core {
 

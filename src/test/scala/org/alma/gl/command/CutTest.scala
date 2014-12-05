@@ -6,7 +6,7 @@ import org.junit.{Assert, Test, Before}
 /**
  * Created on 04/12/14.
  *
- * @author dralagen
+ * @author dralagen, thecreator
  */
 class CutTest {
 
