@@ -1,5 +1,7 @@
 package org.alma.gl
 
+import java.util
+
 import org.alma.gl.command._
 
 /**
@@ -11,128 +13,22 @@ object Core {
 
   def main(args: Array[String]) {
     val workspace: Workspace = new Workspace()
-    println(workspace.getContent())
-    var select: Selection = new SelectionUniqueStrategy(workspace,3)
-    var cmd: Command = new Write(select, "cou")
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
+    val listCommand:util.ArrayList[Command] = new util.ArrayList[Command]()
 
-
-    select = new SelectionUniqueStrategy(workspace, 6)
-    cmd = new Write(select, " World")
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    println(" undo write selectionUnique")
-    Invoker.undo()
-    println(workspace.getContent())
-
-    select = new SelectionMultipleStrategy(workspace, 0, 6)
-    cmd = new Write(select, "Hello")
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-//    println(" undo write selectionMultiple")
-//    Invoker.undo()
-//    println(workspace.getContent())
-
-    select = new SelectionUniqueStrategy(workspace, 4)
-    cmd = new Delete(select)
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    println (" undo delete selectionUnique")
-    Invoker.undo()
-    println(workspace.getContent())
-
-    select = new SelectionMultipleStrategy(workspace, 3,6)
-    cmd = new Delete(select)
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    Invoker.undo()
-    println(" undo delete selectionMultiple")
-    println(workspace.getContent())
-
-    cmd = new Cut(select)
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-
+    listCommand.add(new Write(new SelectionUniqueStrategy(workspace, 0), "Hello"))
+    listCommand.add(new Write(new SelectionUniqueStrategy(workspace, 5), " World!"))
+    listCommand.add(new Write(new SelectionMultipleStrategy(workspace, 0, 5), "Coucou"))
     Invoker.invokeCommand(
-      new Delete(
-        new SelectionMultipleStrategy(workspace, 0, Int.MaxValue)
-      )
-    )
-    println(workspace.getContent())
-
-    Invoker.invokeCommand(
-      new Write(
+      new Macro(
         new SelectionUniqueStrategy(workspace, 0),
-        "Hello World"
+        listCommand
       )
     )
-    println(workspace.getContent())
 
-    cmd = new Paste(new SelectionUniqueStrategy(workspace, 3))
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    println(" undo paste cut selection")
-    Invoker.undo()
-    println(workspace.getContent())
-
-    cmd = new Paste(new SelectionMultipleStrategy(workspace, 0, 3))
-    Invoker.invokeCommand(cmd)
-    println(workspace.getContent())
-    println(" undo paste cut selection")
-    Invoker.undo()
-    println(workspace.getContent())
-
-    cmd = new Copy(new SelectionMultipleStrategy(workspace, 0, 5))
-    Invoker.invokeCommand(cmd)
-
-    println("UNDO ---------------")
-
-    Invoker.undo()
     println(workspace.getContent())
 
     Invoker.undo()
-    println(workspace.getContent())
 
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
-
-    Invoker.undo()
-    println(workspace.getContent())
+    System.out.println(workspace.getContent())
   }
 }
