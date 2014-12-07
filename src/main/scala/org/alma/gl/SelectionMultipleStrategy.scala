@@ -10,12 +10,9 @@ class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) ex
   verifySelection()
   buffer = ws
 
-  override def delete(): String = {
+  override def delete(): Unit = {
     verifySelection()
-
-    val deleteText = getContent
     write(new Clipboard(""))
-    deleteText
   }
 
   override def read(): Clipboard = {

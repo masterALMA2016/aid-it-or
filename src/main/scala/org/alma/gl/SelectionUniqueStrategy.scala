@@ -10,15 +10,12 @@ class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     verifySelection()
     buffer = ws
 
-    override def delete(): String = {
+    override def delete(): Unit = {
         verifySelection()
 
         if (start > 0 && ws.getContent().length() > 1) {
-            val deleteText:String = ws.getContent().substring(start-1, end)
             ws.setContent(ws.getContent().substring(0, start-1) + ws.getContent().substring(end))
-            return deleteText
         }
-        ""
     }
 
     override def read(): Clipboard = {

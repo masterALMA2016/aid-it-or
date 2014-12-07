@@ -60,6 +60,8 @@ class DeleteTest {
       )
     )
 
+    Assert.assertEquals("Delete content with selection unique", "Co World!", workspace.getContent())
+
     Invoker.undo()
 
     Assert.assertEquals("Undo Delete with selection unique", "Cou World!", workspace.getContent())
@@ -77,6 +79,8 @@ class DeleteTest {
         new SelectionMultipleStrategy(workspace, 0, 3)
       )
     )
+
+    Assert.assertEquals("Delete content with selection multiple", " World!", workspace.getContent())
 
     Invoker.undo()
 

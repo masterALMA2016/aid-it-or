@@ -1,6 +1,6 @@
 package org.alma.gl.command
 
-import org.alma.gl.{SelectionUniqueStrategy, Clipboard, Selection}
+import org.alma.gl.{Workspace, SelectionUniqueStrategy, Clipboard, Selection}
 
 /**
  * Created on 24/11/14.
@@ -8,9 +8,22 @@ import org.alma.gl.{SelectionUniqueStrategy, Clipboard, Selection}
  * @author dralagen, thecreator
  */
 class Delete(s: Selection) extends Command(s) {
-    var deleteText:String = null
+
+
+    override def getSelectContent: String = {
+        var selectionContent: String = selection.getContent
+        if (selectionContent == "") {
+            selection.verifySelection()
+            val ws:Workspace = selection.getWorkspace
+            if (selection.getStart > 0 && ws.getContent().length() > 1) {
+                selectionContent = ws.getContent().substring(selection.getStart-1,selection.getEnd)
+            }
+        }
+        selectionContent
+    }
+
     override def execute(clipboard:Clipboard): Clipboard ={
-        deleteText=selection.delete()
+        selection.delete()
         clipboard
     }
 
@@ -22,7 +35,7 @@ class Delete(s: Selection) extends Command(s) {
 
         val newSelect:Selection = new SelectionUniqueStrategy(selection.getWorkspace, start)
 
-        val cmd:Command = new Write(newSelect, deleteText)
+        val cmd:Command = new Write(newSelect, selectContent)
 
         cmd.execute(c)
     }
