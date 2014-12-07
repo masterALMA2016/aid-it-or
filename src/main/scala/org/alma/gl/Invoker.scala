@@ -25,11 +25,10 @@ object Invoker {
     val index:Int = history.size()-1
     if (index >= 0) {
       val cmd: CommandHistory = history.get(index)
+      history.remove(index)
       cmd.undo()
 
       clipboard = cmd.preClipboard
-
-      history.remove(index)
     }
   }
 
