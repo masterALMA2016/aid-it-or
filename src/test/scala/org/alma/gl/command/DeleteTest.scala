@@ -22,6 +22,9 @@ class DeleteTest {
 
   @Test
   def executeSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Delete(
         new SelectionUniqueStrategy(workspace, 3)
@@ -33,6 +36,8 @@ class DeleteTest {
 
   @Test
   def executeSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Delete(
@@ -46,6 +51,9 @@ class DeleteTest {
 
   @Test
   def undoSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Delete(
         new SelectionUniqueStrategy(workspace, 3)
@@ -61,6 +69,9 @@ class DeleteTest {
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Delete(
         new SelectionMultipleStrategy(workspace, 0, 3)

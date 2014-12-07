@@ -22,6 +22,8 @@ class CopyTest {
   @Test
   def executeSelectionUniqueTest(): Unit = {
 
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Copy(
         new SelectionUniqueStrategy(workspace, 3)
@@ -34,6 +36,8 @@ class CopyTest {
 
   @Test
   def executeSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Copy(
@@ -48,6 +52,8 @@ class CopyTest {
 
   @Test
   def executeSelectionMultipleAndUnique(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Copy(
@@ -72,6 +78,8 @@ class CopyTest {
   @Test
   def doubleExecuteSelectionMultiple(): Unit = {
 
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Copy(
         new SelectionMultipleStrategy(workspace, 4, 9)
@@ -95,6 +103,8 @@ class CopyTest {
   @Test
   def undoSelectionUniqueTest(): Unit = {
 
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Copy(
         new SelectionMultipleStrategy(workspace, 4, 9)
@@ -117,6 +127,8 @@ class CopyTest {
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Copy(

@@ -22,6 +22,9 @@ class WriteTest {
 
   @Test
   def executeSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Write(
         new SelectionUniqueStrategy(workspace, 3),
@@ -34,6 +37,8 @@ class WriteTest {
 
   @Test
   def executeSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Write(
@@ -48,6 +53,9 @@ class WriteTest {
 
   @Test
   def undoSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Write(
         new SelectionUniqueStrategy(workspace, 3),
@@ -64,6 +72,9 @@ class WriteTest {
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Write(
         new SelectionMultipleStrategy(workspace, 0, 3),

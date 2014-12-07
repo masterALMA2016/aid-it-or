@@ -29,6 +29,9 @@ class PasteTest {
 
   @Test
   def executeSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Paste(
         new SelectionUniqueStrategy(workspace, 3)
@@ -40,6 +43,8 @@ class PasteTest {
 
   @Test
   def executeSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Paste(
@@ -53,6 +58,9 @@ class PasteTest {
 
   @Test
   def undoSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Paste(
         new SelectionUniqueStrategy(workspace, 3)
@@ -68,6 +76,9 @@ class PasteTest {
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Paste(
         new SelectionMultipleStrategy(workspace, 0, 3)

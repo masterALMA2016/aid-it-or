@@ -22,6 +22,9 @@ class CutTest {
 
   @Test
   def executeSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionUniqueStrategy(workspace, 3)
@@ -34,6 +37,8 @@ class CutTest {
 
   @Test
   def executeSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Cut(
@@ -57,6 +62,8 @@ class CutTest {
   @Test
   def executeSelectionMultipleAndUnique():Unit = {
 
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionMultipleStrategy(workspace, 0, 3)
@@ -72,6 +79,9 @@ class CutTest {
 
   @Test
   def doubleExecuteSelectionMultiple():Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionMultipleStrategy(workspace, 0, 3)
@@ -93,6 +103,9 @@ class CutTest {
 
   @Test
   def undoSelectionUniqueTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionMultipleStrategy(workspace, 0, 3)
@@ -115,6 +128,8 @@ class CutTest {
 
   @Test
   def undoSelectionMultipleTest(): Unit = {
+
+    Assert.assertEquals("Init workspace", "Cou World!", workspace.getContent())
 
     Invoker.invokeCommand(
       new Cut(
