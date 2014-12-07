@@ -35,6 +35,8 @@ abstract class Selection {
   }
 
   def write(cli: Clipboard): Unit = {
+    verifySelection()
+
     val content: String = buffer.getContent()
     var before: String = ""
     var after: String = ""
@@ -57,7 +59,9 @@ abstract class Selection {
 
   def delete(): String
 
-  def read:Clipboard = ???
+  def read():Clipboard
 
-  def cut(): Clipboard = ???
+  def cut(): Clipboard
+
+  def verifySelection():Unit
 }

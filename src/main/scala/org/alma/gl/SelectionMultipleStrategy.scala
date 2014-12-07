@@ -7,39 +7,49 @@ package org.alma.gl
  */
 class SelectionMultipleStrategy(ws:Workspace, beginCursor:Int, endCursor:Int) extends Selection {
 
-  start = {
-    if (beginCursor < 0) {
-      0
-    } else if (beginCursor > ws.getContent().length()) {
-      ws.getContent().length()
-    } else {
-      beginCursor
-    }
-  }
-  end = {
-    if (endCursor < start) {
-      start
-    } else if (endCursor > ws.getContent().length()) {
-      ws.getContent().length()
-    } else {
-      endCursor
-    }
-  }
+  verifySelection()
   buffer = ws
 
   override def delete(): String = {
-      val deleteText = getContent
-      write(new Clipboard(""))
-      deleteText
+    verifySelection()
+
+    val deleteText = getContent
+    write(new Clipboard(""))
+    deleteText
   }
 
-  override def read: Clipboard = {
+  override def read(): Clipboard = {
+    verifySelection()
+
     new Clipboard(buffer.getContent().substring(start, end))
   }
 
   override def cut(): Clipboard = {
-    val clip:Clipboard = read
+    verifySelection()
+
+    val clip:Clipboard = read()
     delete()
     clip
+  }
+
+  override def verifySelection(): Unit = {
+    start = {
+      if (beginCursor < 0) {
+        0
+      } else if (beginCursor > ws.getContent().length()) {
+        ws.getContent().length()
+      } else {
+        beginCursor
+      }
+    }
+    end = {
+      if (endCursor < start) {
+        start
+      } else if (endCursor > ws.getContent().length()) {
+        ws.getContent().length()
+      } else {
+        endCursor
+      }
+    }
   }
 }

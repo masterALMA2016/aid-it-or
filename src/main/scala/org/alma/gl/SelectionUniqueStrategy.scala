@@ -7,34 +7,38 @@ package org.alma.gl
  */
 class SelectionUniqueStrategy(ws:Workspace, cursor: Int) extends Selection {
     
-    start = {
-        if (cursor < 0) {
-            0
-        } else if (cursor > ws.getContent().length()) {
-            ws.getContent().length()
-        } else {
-            cursor
-        }
-    }
-    end = start
+    verifySelection()
     buffer = ws
 
     override def delete(): String = {
+        verifySelection()
+
         if (start > 0 && ws.getContent().length() > 1) {
-            start -= 1
-            val deleteText:String = getContent
-            write(new Clipboard(""))
-            start += 1
+            val deleteText:String = ws.getContent().substring(start-1, end)
+            ws.setContent(ws.getContent().substring(0, start-1) + ws.getContent().substring(end))
             return deleteText
         }
         ""
     }
 
-    override def read: Clipboard = {
+    override def read(): Clipboard = {
         new Clipboard("")
     }
 
     override def cut(): Clipboard = {
-        read
+        read()
+    }
+
+    override def verifySelection(): Unit = {
+        start = {
+            if (cursor < 0) {
+                0
+            } else if (cursor > ws.getContent().length()) {
+                ws.getContent().length()
+            } else {
+                cursor
+            }
+        }
+        end = start
     }
 }
