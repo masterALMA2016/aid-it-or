@@ -111,6 +111,9 @@ class CopyTest {
       )
     )
 
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "World", Invoker.getContentClipboard)
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionUniqueStrategy(workspace, 3)
@@ -135,6 +138,9 @@ class CopyTest {
         new SelectionMultipleStrategy(workspace, 4, 9)
       )
     )
+
+    Assert.assertEquals("Copy content with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Copy add content into clipboard", "World", Invoker.getContentClipboard)
 
     Invoker.invokeCommand(
       new Cut(

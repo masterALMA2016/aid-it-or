@@ -63,6 +63,8 @@ class WriteTest {
       )
     )
 
+    Assert.assertEquals("Add content with selection unique", "Coucou World!", workspace.getContent())
+
     Invoker.undo()
 
     Assert.assertEquals("Undo Write with selection unique", "Cou World!", workspace.getContent())
@@ -81,6 +83,8 @@ class WriteTest {
         "Hello"
       )
     )
+
+    Assert.assertEquals("Add content with selection multiple", "Hello World!", workspace.getContent())
 
     Invoker.undo()
 

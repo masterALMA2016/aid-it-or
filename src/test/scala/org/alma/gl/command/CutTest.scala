@@ -49,14 +49,6 @@ class CutTest {
     Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
     Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
 
-    Invoker.invokeCommand(
-      new Cut(
-        new SelectionUniqueStrategy(workspace, 3)
-      )
-    )
-
-    Assert.assertEquals("Cut content with selection unique", " World!", workspace.getContent())
-    Assert.assertEquals("Cut add content into clipboard", "", Invoker.getContentClipboard)
   }
 
   @Test
@@ -73,7 +65,14 @@ class CutTest {
     Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
     Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
 
+    Invoker.invokeCommand(
+      new Cut(
+        new SelectionUniqueStrategy(workspace, 3)
+      )
+    )
 
+    Assert.assertEquals("Cut content with selection unique", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "", Invoker.getContentClipboard)
 
   }
 
@@ -112,6 +111,9 @@ class CutTest {
       )
     )
 
+    Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
+
     Invoker.invokeCommand(
       new Cut(
         new SelectionUniqueStrategy(workspace, 3)
@@ -136,6 +138,9 @@ class CutTest {
         new SelectionMultipleStrategy(workspace, 0, 3)
       )
     )
+
+    Assert.assertEquals("Cut content with selection multiple", " World!", workspace.getContent())
+    Assert.assertEquals("Cut add content into clipboard", "Cou", Invoker.getContentClipboard)
 
     Invoker.invokeCommand(
       new Cut(

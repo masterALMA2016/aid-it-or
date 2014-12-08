@@ -39,6 +39,8 @@ class PasteTest {
     )
 
     Assert.assertEquals("Paste content with selection unique", "CouWorld World!", workspace.getContent())
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
+
   }
 
   @Test
@@ -53,6 +55,7 @@ class PasteTest {
     )
 
     Assert.assertEquals("Paste content with selection multiple", "World World!", workspace.getContent())
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
 
   }
 
@@ -67,10 +70,13 @@ class PasteTest {
       )
     )
 
+    Assert.assertEquals("Paste content with selection unique", "CouWorld World!", workspace.getContent())
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
+
     Invoker.undo()
 
     Assert.assertEquals("Undo Paste with selection unique", "Cou World!", workspace.getContent())
-
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
 
   }
 
@@ -85,9 +91,13 @@ class PasteTest {
       )
     )
 
+    Assert.assertEquals("Paste content with selection multiple", "World World!", workspace.getContent())
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
+
     Invoker.undo()
 
     Assert.assertEquals("Undo Paste with selection multiple", "Cou World!", workspace.getContent())
+    Assert.assertEquals("Paste not modified content into clipboard", "World", Invoker.getContentClipboard)
 
   }
 
