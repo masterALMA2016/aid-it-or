@@ -10,5 +10,5 @@ Just compile the project with maven and execute the jar for execute command in o
 
 ```
 mvn install
-java -jar target/aid-it-or*.jar
+java -jar target/aid-it-or-1.0.jar
 ```
